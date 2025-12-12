@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- JavaScript/TypeScript with Node.js v18+ (required for Docusaurus) + Docusaurus v3.x, React, Node.js, npm/yarn, GitHub Pages (001-docusaurus-tech-book)
+- Static files hosted on GitHub Pages, documentation content in Markdown (001-docusaurus-tech-book)
+
+## Recent Changes
+- 001-docusaurus-tech-book: Added JavaScript/TypeScript with Node.js v18+ (required for Docusaurus) + Docusaurus v3.x, React, Node.js, npm/yarn, GitHub Pages

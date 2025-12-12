@@ -1,0 +1,82 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a365d 0%, #2c5282 100%);
+  color: white;
+}
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.modulesSection {
+  padding: 4rem 0;
+  background-color: #f9fafb;
+}
+
+@media screen and (max-width: 996px) {
+  .modulesSection {
+    padding: 2rem 0;
+  }
+}
+
+.sectionTitle {
+  text-align: center;
+  font-weight: bold;
+  color: #1a202c;
+}
+
+.modulesSection p {
+  color: #2d3748;
+}
+
+.moduleCard {
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.moduleCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.chapterList {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chapterList li {
+  padding: 0.25rem 0;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.chapterList li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #3182ce;
+  font-size: 1.2rem;
+}
+
+.card__footer {
+  text-align: center;
+}

@@ -1,55 +1,99 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!-- SYNC IMPACT REPORT
+Version change: N/A -> 1.0.0
+Modified principles: N/A (New constitution)
+Added sections: All principles and sections for Physical AI and Humanoid Robotics
+Removed sections: None
+Templates requiring updates: ✅ updated (plan-template.md, spec-template.md, tasks-template.md)
+Follow-up TODOs: None
+-->
+
+# Physical AI and Humanoid Robotics Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Glossary Enforcement
+Every term and concept must be defined in glossary.md to maintain consistent terminology across all documentation and implementations; All references to technical terms must link back to the glossary definition.
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+### II. Mathematical Validation
+All mathematical equations, formulas, and theoretical principles must be validated through peer review or authoritative sources before implementation; Derivations must include step-by-step justifications showing correctness.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+### III. Functional Code Examples
+Every code example must be tested and proven functional in the intended environment; Code marked as pseudocode must be explicitly labeled as such with surrounding context.
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+### IV. Academic Citation Standard
+Citations are required for all research findings, algorithms, and external concepts using APA format; Sources must be accessible and verifiable; Self-citation is prohibited without clear justification.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### V. Evidence-Based Technical Claims
+Technical claims must be supported by either: (a) authoritative citations, (b) mathematical derivation/proof, or (c) reproducible experimental validation; Unsupported claims are prohibited.
 
-### [PRINCIPLE_6_NAME]
+### VI. Version Specification Compliance
+All software dependencies, APIs, and frameworks must include explicit version numbers in documentation and implementation; Semantic versioning is required with clear deprecation policies.
 
+## Standards
 
-[PRINCIPLE__DESCRIPTION]
+### Documentation Standards
+- Diagrams REQUIRED for spatial concepts, system architectures, and multi-step processes
+- Notation: Mathematical symbols defined in docs/notation.md and used consistently
+- All facts must be traceable to sources
+- Citation should be APA style
+- 0% tolerance on Plagiarism
+- All claims verified against sources
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+### Educational Structure Requirements
+- Content MUST progress logically from fundamentals to advanced topics with clear learning pathways
+- Each chapter/section MUST declare explicit prerequisites (prior chapters or external knowledge)
+- Learning objectives MUST be measurable and stated at chapter start
+- Each module follows prescribed pattern: introduction and chapter list
+- Each chapter follows prescribed pattern: objectives, prerequisites, content (core concepts → implementation → examples), summary, exercises
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+### Exercise Framework
+Each chapter must include at least 3 exercises covering: logical reasoning, conceptual understanding, and implementation scenarios; Exercises must have clear success criteria and sample solutions.
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+## Docusaurus Standards
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### Navigation and Accessibility
+- Whole book MUST be navigable and searchable via Docusaurus
+- Metadata REQUIRED: title, description, keywords, sidebar_position in every .md frontmatter
+- Search optimization: Keywords in headings, metadata, and first paragraph
+
+### Performance and Deployment
+- Book must build successfully before publication
+- Static site deployment on GitHub Pages requires all resources to be local
+- SEO compliance: automatic sitemap generation and proper robots.txt configuration
+
+## Code Quality Requirements
+
+### Example Code Standards
+- Example code must be complete for the situation (fulfill required logic even if partial implementation)
+- Code must include comments explaining both WHAT the code does and WHY it's implemented that way
+- Dependencies and packages must be properly mentioned with exact version numbers
+- Libraries must be standard, top-used, and widely adopted in the industry
+
+### Code Structure with MCP
+- Use context7 MCP for every code and setup-related task
+- Context7 MCP is installed and SHOULD be used for installing any packages
+- Docusaurus should fully utilize CONTEXT7 MCP documentation
+
+## Build and Deployment Gates
+
+### Pre-deployment Quality Checks
+- Docusaurus must build successfully without any errors or warnings
+- Broken link checker must pass (verify all internal and external links)
+- Spell check must pass with strict verification
+- All code examples must run successfully in test environment
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+### Amendment Procedure
+This constitution may only be amended through the following process: proposal submitted with justification, peer review by at least two qualified reviewers, trial period of 30 days if applicable, and formal approval documented in version history.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+### Versioning Policy
+Version numbers follow semantic versioning (MAJOR.MINOR.PATCH):
+- MAJOR: Fundamental changes to core principles or governance
+- MINOR: Addition of new principles or material expansion of guidance
+- PATCH: Clarifications, wording adjustments, typo fixes
+
+### Compliance Review
+All contributions must verify compliance with these principles; Non-compliance must be documented with justification; Regular reviews ensure continued adherence to standards.
+
+**Version**: 1.0.0 | **Ratified**: 2025-12-10 | **Last Amended**: 2025-12-10

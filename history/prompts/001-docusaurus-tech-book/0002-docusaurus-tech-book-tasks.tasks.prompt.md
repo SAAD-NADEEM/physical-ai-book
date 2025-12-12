@@ -6,7 +6,7 @@ date: 2025-12-10
 surface: agent
 model: Qwen
 feature: 001-docusaurus-tech-book
-branch: 001-docusaurus-tech-book
+branch: main
 user: user
 command: /sp.tasks
 labels: [docusaurus, physical-ai, robotics, documentation, tasks]

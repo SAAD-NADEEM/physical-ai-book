@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [main, 001-docusaurus-tech-book]
+    branches: [main]
   workflow_dispatch:
 
 jobs:

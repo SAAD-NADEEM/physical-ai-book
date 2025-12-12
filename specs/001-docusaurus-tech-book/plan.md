@@ -1,6 +1,6 @@
 # Implementation Plan: Docusaurus-based Technical Book on Physical AI and Humanoid Robotics
 
-**Branch**: `001-docusaurus-tech-book` | **Date**: 2025-12-10 | **Spec**: [link]
+**Branch**: `main` | **Date**: 2025-12-10 | **Spec**: [link]
 **Input**: Feature specification from `/specs/001-docusaurus-tech-book/spec.md`
 
 **Note**: This template is filled in by the `/sp.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.

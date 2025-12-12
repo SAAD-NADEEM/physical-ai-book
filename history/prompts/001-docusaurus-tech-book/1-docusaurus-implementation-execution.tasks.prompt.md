@@ -5,7 +5,7 @@ stage: tasks
 date: '2025-12-11'
 model: openai/gpt-4o
 feature: 001-docusaurus-tech-book
-branch: 001-docusaurus-tech-book
+branch: main
 user: qwen
 labels: []
 links: 

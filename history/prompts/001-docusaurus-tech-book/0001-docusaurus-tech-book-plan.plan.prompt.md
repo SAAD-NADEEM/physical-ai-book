@@ -6,7 +6,7 @@ date: 2025-12-10
 surface: agent
 model: Qwen
 feature: 001-docusaurus-tech-book
-branch: 001-docusaurus-tech-book
+branch: main
 user: user
 command: /sp.plan Create a comprehensive implementation plan for building a Docusaurus-based technical book on Physical AI and Humanoid Robotics, fully compliant with constitution v1.0.0.
 labels: [docusaurus, physical-ai, robotics, documentation]

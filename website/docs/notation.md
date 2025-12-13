@@ -35,18 +35,18 @@ This document defines the mathematical notation used throughout the Physical AI 
 
 ## Kinematics and Dynamics
 
-- A_p_B: Position vector of point B expressed in frame A
-- A_R_B: Rotation matrix from frame B to frame A
-- A_T_B: Homogeneous transformation matrix from frame B to frame A
+- `A_p_B`: Position vector of point B expressed in frame A
+- `A_R_B`: Rotation matrix from frame B to frame A
+- `A_T_B`: Homogeneous transformation matrix from frame B to frame A
 - J: Jacobian matrix
-- q_dot: Time derivative of joint angles q
-- q_ddot: Second time derivative of joint angles q
-- omega: Angular velocity vector
-- v: Linear velocity vector
-- M(q): Mass/inertia matrix
-- C(q, q_dot): Coriolis and centrifugal forces matrix
-- g(q): Gravity forces vector
-- tau: Joint torque/force vector
+- `q_dot`: Time derivative of joint angles q
+- `q_ddot`: Second time derivative of joint angles q
+- `omega`: Angular velocity vector
+- `v`: Linear velocity vector
+- `M(q)`: Mass/inertia matrix
+- `C(q, q_dot)`: Coriolis and centrifugal forces matrix
+- `g(q)`: Gravity forces vector
+- `tau`: Joint torque/force vector
 
 ## Probabilities and Statistics
 
@@ -61,25 +61,25 @@ This document defines the mathematical notation used throughout the Physical AI 
 
 ## Calculus and Optimization
 
-- grad_f: Gradient of function f
-- grad2_f: Hessian matrix of function f
-- partial_f_partial_x: Partial derivative of f with respect to x
-- d_f_dt: Total derivative of f with respect to t
-- integral_dx: Integral with respect to x
-- argmin_x f(x): Value of x that minimizes f(x)
-- argmax_x f(x): Value of x that maximizes f(x)
+- `grad_f`: Gradient of function f
+- `grad2_f`: Hessian matrix of function f
+- `partial_f_partial_x`: Partial derivative of f with respect to x
+- `d_f_dt`: Total derivative of f with respect to t
+- `integral_dx`: Integral with respect to x
+- `argmin_x f(x)`: Value of x that minimizes f(x)
+- `argmax_x f(x)`: Value of x that maximizes f(x)
 
 ## Control Theory
 
 - s: Laplace variable
 - G(s): Transfer function
 - zeta: Damping ratio
-- omega_n: Natural frequency
+- `omega_n`: Natural frequency
 - A, B, C, D: State-space matrices
 - x: State vector
 - u: Control input vector
 - y: Output vector
-- x_dot: Time derivative of state vector
+- `x_dot`: Time derivative of state vector
 - K: Feedback gain matrix
 - L: Observer gain matrix
 
@@ -90,8 +90,8 @@ This document defines the mathematical notation used throughout the Physical AI 
 - se(3): Lie algebra of SE(3)
 - so(3): Lie algebra of SO(3)
 - xi: Twist vector (in se(3))
-- Ad_T: Adjoint transformation matrix
-- ad_xi: Adjoint operator
+- `Ad_T`: Adjoint transformation matrix
+- `ad_xi`: Adjoint operator
 - exp(.): Matrix exponential
 - log(.): Matrix logarithm
 

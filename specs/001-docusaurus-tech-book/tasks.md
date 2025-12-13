@@ -196,12 +196,12 @@ Deploy the technical book to GitHub Pages with automated deployment via GitHub A
 - [X] T071 [US6] Configure GitHub Actions workflow for automated deployment
 - [X] T072 [US6] Create deploy.yml workflow file with proper settings
 - [X] T073 [US6] Set up proper .gitignore for Docusaurus project
-- [ ] T074 [US6] Test deployment workflow with a sample commit
-- [ ] T075 [US6] Verify site is accessible on GitHub Pages
-- [ ] T076 [US6] Test navigation functionality on the deployed site
-- [ ] T077 [US6] Verify search functionality works on the deployed site
-- [ ] T078 [US6] Check SEO elements (sitemap accessible, robots.txt correct)
-- [ ] T079 [US6] Test mobile responsiveness of the deployed site
+- [X] T074 [US6] Test deployment workflow with a sample commit
+- [X] T075 [US6] Verify site is accessible on GitHub Pages
+- [X] T076 [US6] Test navigation functionality on the deployed site
+- [X] T077 [US6] Verify search functionality works on the deployed site
+- [X] T078 [US6] Check SEO elements (sitemap accessible, robots.txt correct)
+- [X] T079 [US6] Test mobile responsiveness of the deployed site
 
 ---
 

@@ -15,18 +15,28 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-username.github.io', // Replace with your base URL
+  url: 'https://Hackathone01withqwen.github.io', // Replace with your base URL
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/physical-ai-book/', // Adjust based on your repository name
+  baseUrl: '/hackathoneWithQWEN_V2/', // Adjust based on your repository name
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-github-org', // Usually your GitHub org/user name.
-  projectName: 'physical-ai-book', // Usually your repo name.
+  organizationName: 'Hackathone01withqwen', // Usually your GitHub org/user name.
+  projectName: 'hackathoneWithQWEN_V2', // Usually your repo name.
 
   onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
+  markdown: {
+    format: 'detect',
+    mermaid: true,
+    features: {
+      hoistTags: true,
+      truncate: true,
+    },
+    hooks: {
+      onBrokenMarkdownLinks: 'warn',
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -45,7 +55,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/your-username/physical-ai-book',
+            'https://github.com/Hackathone01withqwen/hackathoneWithQWEN_V2',
           // Optional: for search functionality
           showLastUpdateTime: true,
           showLastUpdateAuthor: true,
@@ -59,7 +69,7 @@ const config: Config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/your-username/physical-ai-book',
+            'https://github.com/Hackathone01withqwen/hackathoneWithQWEN_V2',
           // Useful options to enforce blogging best practices
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
@@ -102,7 +112,7 @@ const config: Config = {
           label: 'Modules',
         },
         {
-          href: 'https://github.com/your-username/physical-ai-book',
+          href: 'https://github.com/Hackathone01withqwen/hackathoneWithQWEN_V2',
           label: 'GitHub',
           position: 'right',
         },
@@ -141,7 +151,7 @@ const config: Config = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/your-username/physical-ai-book',
+              href: 'https://github.com/Hackathone01withqwen/hackathoneWithQWEN_V2',
             },
           ],
         },

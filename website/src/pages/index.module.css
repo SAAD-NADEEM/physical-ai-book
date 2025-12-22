@@ -12,6 +12,10 @@
   color: white;
 }
 
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
 @media screen and (max-width: 996px) {
   .heroBanner {
     padding: 2rem;
@@ -30,6 +34,10 @@
   background-color: #f9fafb;
 }
 
+[data-theme='dark'] .modulesSection {
+  background-color: #1a1a1a;
+}
+
 @media screen and (max-width: 996px) {
   .modulesSection {
     padding: 2rem 0;
@@ -42,19 +50,37 @@
   color: #1a202c;
 }
 
+[data-theme='dark'] .sectionTitle {
+  color: #f0f0f0;
+}
+
 .modulesSection p {
   color: #2d3748;
+}
+
+[data-theme='dark'] .modulesSection p {
+  color: #d1d5db;
 }
 
 .moduleCard {
   height: 100%;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, box-shadow 0.2s;
+  background-color: white;
+}
+
+[data-theme='dark'] .moduleCard {
+  background-color: #2d3748;
+  color: #f0f0f0;
 }
 
 .moduleCard:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme='dark'] .moduleCard:hover {
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
 }
 
 .chapterList {
@@ -67,6 +93,11 @@
   padding: 0.25rem 0;
   position: relative;
   padding-left: 1.5rem;
+  color: #2d3748;
+}
+
+[data-theme='dark'] .chapterList li {
+  color: #d1d5db;
 }
 
 .chapterList li::before {
@@ -75,6 +106,10 @@
   left: 0;
   color: #3182ce;
   font-size: 1.2rem;
+}
+
+[data-theme='dark'] .chapterList li::before {
+  color: #60a5fa;
 }
 
 .card__footer {

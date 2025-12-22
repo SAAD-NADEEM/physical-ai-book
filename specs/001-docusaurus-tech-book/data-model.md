@@ -1,221 +1,133 @@
 # Data Model: Docusaurus-based Technical Book on Physical AI and Humanoid Robotics
 
-## Overview
+## Entity: Module
+- **Description**: A major section of the book that spans multiple weeks of curriculum
+- **Attributes**:
+  - id: Unique identifier (e.g., "module-1-ros2")
+  - title: Display title (e.g., "The Robotic Nervous System (ROS 2)")
+  - weeks: Number of weeks covered (e.g., 5 for Module 1)
+  - chapters: List of chapter identifiers within the module
+  - introduction: Brief description of the module's content and objectives
+  - prerequisites: List of prerequisite modules or knowledge areas
+- **Relationships**:
+  - Contains multiple Chapter entities
+  - May have dependencies on other Module entities
+- **Validation rules**:
+  - Must have a title between 5 and 100 characters
+  - Must specify a valid number of weeks
+  - Must include at least one chapter
 
-This document defines the data model for the technical book, focusing on the content structure, metadata schema, and organization of information within the Docusaurus-based site.
+## Entity: Chapter
+- **Description**: A weekly section within a module that contains specific learning objectives, prerequisites, content, and exercises
+- **Attributes**:
+  - id: Unique identifier (e.g., "module-1-chapter-1")
+  - title: Display title
+  - module_id: Reference to the parent Module
+  - week_number: The week in the course this chapter covers
+  - learning_objectives: List of measurable learning objectives
+  - prerequisites: List of prerequisite chapters or concepts
+  - content: Main content body (Markdown format)
+  - summary: Brief summary of the chapter content
+  - exercises: List of Exercise entities
+  - sidebar_position: Navigation position in the sidebar
+  - description: Meta description for SEO
+  - keywords: List of keywords for search optimization
+- **Relationships**:
+  - Belongs to one Module entity
+  - Contains multiple Exercise entities
+  - May reference multiple Code Example entities
+- **Validation rules**:
+  - Must have learning objectives (minimum 1, maximum 5)
+  - Must include prerequisites
+  - Must include at least 3 exercises
+  - Content must be between 1,500 and 3,000 words
+  - Must include required frontmatter metadata
 
-## Content Structure
+## Entity: Exercise
+- **Description**: A learning activity within a chapter with logical, conceptual, or implementation scenarios
+- **Attributes**:
+  - id: Unique identifier (e.g., "chapter-1-exercise-1")
+  - chapter_id: Reference to the parent Chapter
+  - type: Category of exercise ("logical", "conceptual", or "implementation")
+  - title: Brief title describing the exercise
+  - description: Detailed description of the exercise requirements
+  - success_criteria: What constitutes successful completion
+  - sample_solution: Example solution (for educator reference)
+- **Relationships**:
+  - Belongs to one Chapter entity
+- **Validation rules**:
+  - Must have a defined type
+  - Must include success criteria
+  - Description must be between 50 and 500 words
 
-### Book Level Entities
+## Entity: Code Example
+- **Description**: A functional code snippet with comments explaining what it does and why it's implemented that way
+- **Attributes**:
+  - id: Unique identifier (e.g., "example-ros2-publisher")
+  - chapter_id: Reference to the parent Chapter (optional, for examples not tied to specific chapters)
+  - title: Brief descriptive title
+  - code: The actual code content
+  - language: Programming language or format (e.g., "python", "javascript", "bash", "urdf")
+  - description: Explanation of what the code does
+  - comments_explaining_what: Comments explaining what the code does
+  - comments_explaining_why: Comments explaining why it's implemented this way
+  - dependencies: List of required dependencies with version specifications
+  - environment: Required runtime environment for testing
+  - test_status: Whether the code example has been tested and verified (boolean)
+- **Relationships**:
+  - Belongs to one Chapter entity (optional)
+- **Validation rules**:
+  - Must include comments explaining both WHAT and WHY
+  - Must specify dependencies with version numbers
+  - Must be tested and verified before inclusion
 
-#### Book
-- **Entity**: Book
-- **Fields**:
-  - title: string (Physical AI and Humanoid Robotics)
-  - subtitle: string (A 13-Week Graduate Course)
-  - description: string (Comprehensive technical book covering ROS 2, Simulation, NVIDIA Isaac, and VLA)
-  - author: string[]
-  - publisher: string
-  - year: integer
-  - edition: string
-  - totalWords: range (40000-60000)
-  - modulesCount: integer (4)
-  - chaptersCount: integer (13+)
-- **Relationships**: Contains Modules, References Glossary, References Notation
+## Entity: Glossary Term
+- **Description**: A standardized term defined in glossary.md that maintains consistent terminology across the book
+- **Attributes**:
+  - id: Unique identifier (e.g., "ros2", "gazebo", "isaac")
+  - term: The actual term being defined
+  - definition: Clear and concise definition of the term
+  - examples: Optional usage examples
+  - see_also: List of related terms
+  - category: The category this term belongs to (e.g., "software", "hardware", "algorithm")
+- **Relationships**:
+  - Referenced by multiple Chapter entities
+- **Validation rules**:
+  - Term and definition must not be empty
+  - Must be linked from at least one content page
 
-### Module Level Entities
-
-#### Module
-- **Entity**: Module
-- **Fields**:
-  - moduleId: string (unique identifier like "module-1-ros2")
-  - title: string (descriptive module title)
-  - description: string (overview of module content)
-  - duration: string (week range, e.g., "Weeks 1-5")
-  - prerequisites: string[] (prerequisite modules or knowledge areas)
-  - learningObjectives: string[] (measurable learning outcomes)
-  - chapters: integer (number of chapters in the module)
-  - estimatedReadingTime: integer (hours)
-- **Relationships**: Contains Chapters, Belongs to Book
-
-### Chapter Level Entities
-
-#### Chapter
-- **Entity**: Chapter
-- **Fields**:
-  - chapterId: string (unique identifier like "chapter-1")
-  - moduleId: string (reference to parent module)
-  - title: string (chapter title)
-  - description: string (brief chapter summary)
-  - position: integer (order within module)
-  - prerequisites: string[] (specific chapter or concept prerequisites)
-  - learningObjectives: string[] (measurable learning outcomes)
-  - content: string (the chapter content in Markdown)
-  - keywords: string[] (SEO keywords)
-  - estimatedReadingTime: integer (minutes)
-  - exercises: Exercise[]
-- **Relationships**: Belongs to Module, References Glossary terms, References Notation
-
-#### Exercise
-- **Entity**: Exercise
-- **Fields**:
-  - exerciseId: string (unique identifier)
-  - chapterId: string (reference to parent chapter)
-  - title: string
-  - type: enum (Logical, Conceptual, Implementation)
-  - difficulty: enum (Basic, Intermediate, Advanced)
-  - description: string
-  - solution: string (optional sample solution)
-  - successCriteria: string
-- **Relationships**: Belongs to Chapter
-
-### Supporting Document Entities
-
-#### GlossaryTerm
-- **Entity**: GlossaryTerm
-- **Fields**:
-  - termId: string (unique identifier)
-  - term: string (the term being defined)
-  - definition: string (clear, concise definition)
-  - category: string (classification like "Software", "Hardware", "Concept", "Algorithm")
-  - seeAlso: string[] (related terms)
-  - firstAppearance: string (first chapter where term appears)
-- **Relationships**: Referenced by Chapters
-
-#### NotationSymbol
-- **Entity**: NotationSymbol
-- **Fields**:
-  - symbolId: string (unique identifier like "math-001")
-  - symbol: string (the actual mathematical notation)
-  - description: string (what the symbol represents)
-  - context: string (where it's typically used)
-  - example: string (usage example)
-  - firstAppearance: string (first chapter where notation appears)
-- **Relationships**: Referenced by Chapters
-
-## Metadata Schema
-
-### Frontmatter Schema for All Pages
-
-All Markdown files in the documentation must include the following frontmatter metadata:
-
-```yaml
-title: String # Page title
-description: String # Brief description for SEO and social sharing
-keywords: Array<String> # SEO-relevant keywords
-sidebar_position: Integer # Position in sidebar navigation
-tags: Array<String> # Additional classification tags
-authors: Array # Authors of the content
-```
-
-### Specialized Metadata
-
-#### Module Page Frontmatter
-```yaml
-title: String
-description: String
-keywords: Array<String>
-sidebar_position: Integer
-duration: String # e.g., "5 weeks"
-prerequisites: Array<String> # Links to prerequisite content
-learning_outcomes: Array<String>
-table_of_contents: Boolean
-```
-
-#### Chapter Page Frontmatter
-```yaml
-title: String
-description: String
-keywords: Array<String>
-sidebar_position: Integer
-module_ref: String # Reference to parent module
-prerequisites: Array<String> # Specific prerequisites for this chapter
-learning_objectives: Array<String>
-estimated_reading_time: Integer # In minutes
-exercises_count: Integer
-```
-
-## Content Relationships
-
-### Navigation Hierarchy
-```
-Book
-├── Module 1 (ROS 2 Fundamentals)
-│   ├── Chapter 1 (Introduction to ROS 2)
-│   ├── Chapter 2 (Nodes, Topics, Services, Actions)
-│   ├── Chapter 3 (Robot Manipulation and Control)
-│   ├── Chapter 4 (Navigation and Path Planning)
-│   └── Chapter 5 (Multi-Robot Systems)
-├── Module 2 (Simulation Environments)
-│   ├── Chapter 6 (Physics Simulation with Gazebo)
-│   └── Chapter 7 (Unity Integration)
-├── Module 3 (NVIDIA Isaac Platform)
-│   ├── Chapter 8 (Isaac Sim and Isaac ROS)
-│   ├── Chapter 9 (Perception and Sensing)
-│   └── Chapter 10 (Navigation and Manipulation)
-└── Module 4 (Vision-Language-Action Integration)
-    ├── Chapter 11 (Vision-Language Models)
-    ├── Chapter 12 (Action Generation and Execution)
-    └── Chapter 13 (Capstone Project)
-```
-
-### Cross-Reference Patterns
-- Chapters reference Glossary terms using standardized IDs
-- Chapters reference Notation symbols using standardized IDs
-- Modules reference other modules for cross-module concepts
-- Chapters link to exercises within the same chapter
-- Exercises may reference concepts from multiple chapters
-
-## Validation Rules from Requirements
-
-### Required Content Elements
-1. Each Chapter must include:
-   - Learning Objectives (measurable)
-   - Prerequisites (explicit)
-   - Core Concepts section
-   - Implementation section with code examples
-   - Functional code examples (tested, commented)
-   - Summary section
-   - 3 exercises (logical, conceptual, implementation)
-   - Diagrams for spatial/architectural concepts
-   - Version specifications for all dependencies
-   - APA citations where needed
-
-### Quality Constraints
-1. All code examples must be tested and functional
-2. All technical terms must be defined in the glossary
-3. All mathematical notation must be defined in the notation document
-4. All external dependencies must have version numbers specified
-5. All citations must follow APA format
-6. All pages must include complete frontmatter metadata
-
-### Structural Constraints
-1. Content must follow the 4-module, 13-chapter structure
-2. Modules must map to the 13-week course timeline
-3. Each module must have a clear introduction page
-4. Navigation must be hierarchical (Module → Chapter → Section)
-5. All content must be accessible via sidebar navigation
+## Entity: Mathematical Notation
+- **Description**: A symbol or formula defined in docs/notation.md and used consistently across the book
+- **Attributes**:
+  - id: Unique identifier (e.g., "rotation-matrix", "quaternion")
+  - symbol: The actual mathematical notation (LaTeX format)
+  - meaning: Clear explanation of what the notation represents
+  - usage_context: Where this notation is typically used
+  - examples: Examples of how the notation is applied
+  - related_notations: List of related mathematical notations
+- **Relationships**:
+  - Referenced by multiple Chapter entities
+- **Validation rules**:
+  - Symbol and meaning must not be empty
+  - Must include proper LaTeX formatting
 
 ## State Transitions
 
-### Chapter State Model
-- Draft: Created but not reviewed
-- In Review: Undergoing technical review
-- Approved: Reviewed and approved for publication
-- Published: Included in the live site
-- Deprecated: Content is outdated but kept for historical reference
+### Module State Transitions
+- Draft → In Review → Approved → Published
+- Can revert from any state back to Draft during editing process
 
-## Access Patterns
+### Chapter State Transitions
+- Outline → Writing → In Review → Revising → Approved → Published
+- Can move between states based on review feedback
 
-### Common Queries
-1. Find all chapters in a module
-2. Find all glossary terms referenced in a chapter
-3. Find prerequisites for a specific chapter
-4. Find exercises of a specific type (logical, conceptual, implementation)
-5. Find all chapters referencing a specific notation symbol
+### Code Example State Transitions
+- Proposed → Implemented → Tested → Verified → Validated → Included in Content
+- Failed testing returns to Implemented state for correction
 
-### Indexing Recommendations
-- Index by module and chapter for navigation efficiency
-- Index by glossary term for cross-referencing
-- Index by keyword for search functionality
-- Index by author for attribution
+## Additional Validation Rules
+- All entities must have unique IDs within their type
+- All Markdown files must include required frontmatter metadata (title, description, keywords, sidebar_position)
+- All content must comply with constitutional principles (glossary enforcement, mathematical validation, etc.)
+- All external links must be validated as part of the deployment process
+- All code examples must be tested in appropriate environments before publication

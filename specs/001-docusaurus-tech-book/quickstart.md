@@ -1,45 +1,34 @@
 # Quickstart Guide: Docusaurus-based Technical Book on Physical AI and Humanoid Robotics
 
 ## Overview
-
-This quickstart guide provides steps to quickly set up, develop, and deploy the Docusaurus-based technical book on Physical AI and Humanoid Robotics. This guide is designed for developers and content creators who need to get the documentation site running quickly.
+This guide provides a quick introduction to setting up, building, and contributing to the Docusaurus-based technical book on Physical AI and Humanoid Robotics. This book is designed for a 13-week graduate course covering ROS 2, Gazebo/Unity simulation, NVIDIA Isaac, and Vision-Language-Action integration.
 
 ## Prerequisites
+- Node.js version 18.0 or higher
+- npm or yarn package manager
+- Git for version control
+- GitHub account (for contributing)
 
-Before starting, ensure you have the following installed:
+## Getting Started
 
-- **Node.js**: Version 18 or higher
-- **npm or yarn**: Package managers that come with Node.js
-- **Git**: Version control system
-- **A GitHub account**: For deployment to GitHub Pages
+### 1. Clone the Repository
+```bash
+git clone https://github.com/your-org/physical-ai-robotics-book.git
+cd physical-ai-robotics-book/website
+```
 
-## Step 1: Project Setup
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-1. **Clone or create the repository**
-   ```bash
-   git clone https://github.com/your-username/physical-ai-book.git
-   cd physical-ai-book
-   ```
+### 3. Start Development Server
+```bash
+npm run start
+```
+This command starts a local development server and opens the documentation in your browser. Most changes are reflected live without restarting the server.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-   or if using yarn:
-   ```bash
-   yarn install
-   ```
-
-3. **Verify installation**
-   ```bash
-   npm run start
-   ```
-   This command starts a local development server with hot reloading. The site will be accessible at http://localhost:3000.
-
-## Step 2: Project Structure Overview
-
-Familiarize yourself with the main directories:
-
+## Project Structure
 ```
 website/
 ├── blog/                # Blog posts related to Physical AI and Robotics
@@ -71,218 +60,109 @@ website/
 └── README.md            # Project overview
 ```
 
-## Step 3: Configuration
+## Adding Content
 
-1. **Configure docusaurus.config.js**:
-   - Update site metadata (title, tagline, url, baseUrl)
-   - Configure GitHub Pages deployment settings (organizationName, projectName, deploymentBranch)
-   - Set up theme and plugin configurations
+### Creating a New Chapter
+1. Navigate to the appropriate module directory in `website/docs/`
+2. Create a new directory for your chapter with a descriptive name
+3. Add a `index.md` file with the content
 
-2. **Set up navigation in sidebars.js**:
-   - Organize modules and chapters hierarchically
-   - Set sidebar positions for proper ordering
-   - Ensure all content is properly linked
+### Chapter Template
+```markdown
+---
+title: Chapter Title
+description: Brief description of the chapter content
+keywords: [list, of, relevant, keywords]
+sidebar_position: 1
+---
 
-## Step 4: Adding Content
+# Chapter Title
 
-1. **Create a new chapter**:
-   ```markdown
-   ---
-   title: Introduction to ROS 2
-   description: Overview of ROS 2 architecture and concepts for humanoid robotics
-   keywords: [ros2, robotics, middleware, architecture]
-   sidebar_position: 1
-   module_ref: module-1-ros2
-   prerequisites: []
-   learning_objectives: ["Understand ROS 2 architecture", "Identify core components"]
-   estimated_reading_time: 30
-   exercises_count: 3
-   ---
+## Learning Objectives
+After completing this chapter, students will be able to:
+- Objective 1
+- Objective 2
+- Objective 3
 
-   # Introduction to ROS 2
+## Prerequisites
+Before starting this chapter, students should:
+- Prerequisite 1
+- Prerequisite 2
 
-   ## Learning Objectives
-   - Understand the architecture of ROS 2
-   - Identify the core components of a ROS 2 system
-   - Recognize the differences between ROS 1 and ROS 2
+## Core Concepts
+Content explaining the core concepts...
 
-   ## Prerequisites
-   - Basic understanding of robotics concepts
-   - Programming experience in Python or C++
+## Implementation
+Step-by-step implementation guide...
 
-   ## Core Concepts
-   ROS 2 (Robot Operating System 2) is a flexible framework for writing robot applications...
+## Code Examples
+Code examples with explanations of what and why...
 
-   ## Implementation
-   Here's an example of a simple ROS 2 publisher node:
+## Summary
+Brief summary of key points covered in the chapter.
 
-   ```python
-   import rclpy
-   from rclpy.node import Node
-   from std_msgs.msg import String
+## Exercises
+1. **Logical Exercise**: Question requiring logical reasoning.
+2. **Conceptual Exercise**: Question testing conceptual understanding.
+3. **Implementation Exercise**: Hands-on implementation task.
+```
 
-   class MinimalPublisher(Node):
-       def __init__(self):
-           super().__init__('minimal_publisher')
-           self.publisher_ = self.create_publisher(String, 'topic', 10)
-           timer_period = 0.5  # seconds
-           self.timer = self.create_timer(timer_period, self.timer_callback)
-           self.i = 0
+## Building the Site
 
-       def timer_callback(self):
-           msg = String()
-           msg.data = 'Hello World: %d' % self.i
-           self.publisher_.publish(msg)
-           self.get_logger().info('Publishing: "%s"' % msg.data)
-           self.i += 1
+### Local Build
+```bash
+npm run build
+```
+This command generates static content in the `build` directory and can be served using any static hosting service.
 
-   def main(args=None):
-       rclpy.init(args=args)
-       minimal_publisher = MinimalPublisher()
-       rclpy.spin(minimal_publisher)
-       minimal_publisher.destroy_node()
-       rclpy.shutdown()
+### Testing Build Locally
+```bash
+npm run serve
+```
+This command builds the site and serves the generated content locally for testing.
 
-   if __name__ == '__main__':
-       main()
-   ```
+## Configuration
 
-   ## Exercises
-   1. **Logical Exercise**: Explain the advantages of ROS 2 over ROS 1.
-   2. **Conceptual Exercise**: Describe the role of DDS in ROS 2 architecture.
-   3. **Implementation Exercise**: Create a ROS 2 package with a publisher and subscriber node.
+### Site Metadata
+Update `docusaurus.config.js` to adjust:
+- Site title and tagline
+- GitHub Pages deployment settings
+- Navigation items
+- Footer links
 
-   ## Summary
-   This chapter introduced the ROS 2 framework, its architecture, and basic concepts...
+### Navigation
+Edit `sidebars.js` to update the sidebar navigation structure, organizing modules and chapters hierarchically.
 
-   ## References
-   - ROS 2 Documentation: https://docs.ros.org/
-   - DDS Standard: https://www.omg.org/spec/DDS/
-   ```
-   ```
+## Contributing
 
-2. **Update sidebars.js** to include the new chapter:
-   ```js
-   module.exports = {
-     tutorialSidebar: [
-       {
-         type: 'category',
-         label: 'Module 1: ROS 2 Fundamentals',
-         items: [
-           'module-1-ros2/chapter-1',  // Add your new chapter here
-           'module-1-ros2/chapter-2',
-           // ... other chapters
-         ],
-       },
-       // ... other modules
-     ],
-   };
-   ```
+### Content Guidelines
+1. All content must comply with the constitutional principles
+2. Every technical term must be defined in glossary.md
+3. All code examples must be tested and functional
+4. All mathematical equations must be validated
+5. All external concepts must be cited in APA format
+6. All dependencies must have explicit version numbers
 
-## Step 5: Building and Testing
+### Documentation Standards
+- Diagrams required for spatial concepts, system architectures, and multi-step processes
+- Mathematical notation defined in docs/notation.md and used consistently
+- All facts must be traceable to sources
+- 0% tolerance on plagiarism
+- All claims verified against sources
 
-1. **Build the site**:
-   ```bash
-   npm run build
-   ```
-   This creates a static build in the `build/` directory.
+## Deployment
+The site is configured for GitHub Pages deployment. After merging changes to the main branch, GitHub Actions will automatically build and deploy the site to the configured GitHub Pages URL.
 
-2. **Test the build locally**:
-   ```bash
-   npm run serve
-   ```
-   This serves the built site at http://localhost:3000 for testing.
+### Manual Deployment
+If needed, deploy manually using:
+```bash
+npm run deploy
+```
 
-3. **Check for broken links**:
-   ```bash
-   npm run docusaurus check-links
-   ```
-
-4. **Run spell check** (if available):
-   ```bash
-   # You may need to install a spell check plugin
-   npm install docusaurus-plugin-spell-checker
-   ```
-
-## Step 6: Deployment to GitHub Pages
-
-1. **Configure GitHub Actions** in `.github/workflows/deploy.yml`:
-   ```yaml
-   name: Deploy to GitHub Pages
-   on:
-     push:
-       branches: [main]
-   
-   jobs:
-     deploy:
-       name: Deploy to GitHub Pages
-       runs-on: ubuntu-latest
-       steps:
-         - uses: actions/checkout@v3
-         - uses: actions/setup-node@v3
-           with:
-             node-version: 18
-             cache: npm
-   
-         - name: Install dependencies
-           run: npm install
-         - name: Build website
-           run: npm run build
-   
-         - name: Deploy to GitHub Pages
-           uses: peaceiris/actions-gh-pages@v3
-           with:
-             github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: ./build
-             publish_branch: gh-pages
-   ```
-
-2. **Push changes to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Add new chapter content"
-   git push origin main
-   ```
-
-3. **Monitor the deployment** in the GitHub Actions tab.
-
-4. **Visit your deployed site**: Usually available at `https://your-username.github.io/physical-ai-book`
-
-## Common Commands
-
-| Command | Description |
-|--------|-------------|
-| `npm run start` | Start local development server |
-| `npm run build` | Build static site for production |
-| `npm run serve` | Serve built site locally |
-| `npm run docusaurus clear` | Clear Docusaurus cache |
-| `npm run docusaurus swizzle <component>` | Customize a Docusaurus component |
-| `npm run check-links` | Check for broken links |
-
-## Troubleshooting
-
-### Common Issues and Solutions:
-
-1. **"Port 3000 is already in use"**
-   - Solution: Use a different port: `npm run start -- --port 3001`
-
-2. **"Command not found: docusaurus"**
-   - Solution: Ensure you're in the website directory and dependencies are installed
-
-3. **Build fails with "Module not found" errors**
-   - Solution: Run `npm install` again to ensure all dependencies are present
-
-4. **Images not showing up**
-   - Solution: Ensure images are placed in the `static/` directory and referenced with the correct path
-
-5. **Search not working**
-   - Solution: Ensure Algolia DocSearch is properly configured in `docusaurus.config.js`
-
-## Next Steps
-
-After completing the quickstart:
-
-1. Review the [Data Model](./data-model.md) document for the full content structure
-2. Consult the [Implementation Plan](./plan.md) for the complete development workflow
-3. Follow the constitutional principles for consistent content creation
-4. Use the [Research Summary](./research.md) for best practices and implementation details
+## Quality Gates
+Before submitting content, ensure:
+- Docusaurus builds successfully with zero errors/warnings
+- All internal and external links are valid
+- Spell check passes with strict verification
+- All code examples run successfully in test environments
+- All constitutional principles are followed

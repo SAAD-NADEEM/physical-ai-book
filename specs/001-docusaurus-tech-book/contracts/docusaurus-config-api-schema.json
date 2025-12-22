@@ -1,0 +1,352 @@
+# Docusaurus Configuration API Schema
+
+## Overview
+This schema defines the configuration structure for the Docusaurus-based technical book on Physical AI and Humanoid Robotics. It includes all necessary fields for GitHub Pages deployment, SEO optimization, and navigation setup.
+
+## Schema: docusaurus.config.js
+
+```json
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Docusaurus Configuration API",
+    "description": "Configuration schema for Docusaurus-based technical book on Physical AI and Humanoid Robotics"
+  },
+  "paths": {},
+  "components": {
+    "schemas": {
+      "DocusaurusConfig": {
+        "type": "object",
+        "required": ["title", "tagline", "url", "baseUrl", "organizationName", "projectName", "deploymentBranch", "presets", "themes", "plugins"],
+        "properties": {
+          "title": {
+            "type": "string",
+            "description": "Site title for the technical book",
+            "example": "Physical AI and Humanoid Robotics"
+          },
+          "tagline": {
+            "type": "string",
+            "description": "Brief description of the book",
+            "example": "A comprehensive guide to embodied robotics systems for graduate students"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL of your site's homepage",
+            "example": "https://your-org.github.io"
+          },
+          "baseUrl": {
+            "type": "string",
+            "description": "Base URL for your site relative to the site's domain",
+            "example": "/physical-ai-robotics-book/"
+          },
+          "organizationName": {
+            "type": "string",
+            "description": "Your GitHub organization/username",
+            "example": "your-org"
+          },
+          "projectName": {
+            "type": "string",
+            "description": "Your project's GitHub repository name",
+            "example": "physical-ai-robotics-book"
+          },
+          "deploymentBranch": {
+            "type": "string",
+            "description": "Branch the action should deploy to",
+            "example": "gh-pages"
+          },
+          "favicon": {
+            "type": "string",
+            "format": "uri",
+            "description": "Path to your site's favicon",
+            "example": "img/favicon.ico"
+          },
+          "tagline": {
+            "type": "string",
+            "description": "Brief description of your site",
+            "example": "A comprehensive educational resource for Physical AI and Humanoid Robotics"
+          },
+          "presets": {
+            "type": "array",
+            "description": "Docusaurus presets",
+            "items": {
+              "type": "array",
+              "items": [
+                {
+                  "type": "string",
+                  "example": "@docusaurus/preset-classic"
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "docs": {
+                      "type": "object",
+                      "properties": {
+                        "sidebarPath": {
+                          "type": "string",
+                          "example": require.resolve('./sidebars.js')
+                        },
+                        "editUrl": {
+                          "type": "string",
+                          "example": "https://github.com/your-org/physical-ai-robotics-book/edit/main/website/"
+                        }
+                      }
+                    },
+                    "blog": {
+                      "type": "object",
+                      "properties": {
+                        "showReadingTime": {
+                          "type": "boolean",
+                          "example": true
+                        },
+                        "editUrl": {
+                          "type": "string",
+                          "example": "https://github.com/your-org/physical-ai-robotics-book/edit/main/website/blog/"
+                        }
+                      }
+                    },
+                    "theme": {
+                      "type": "object",
+                      "properties": {
+                        "customCss": {
+                          "type": "string",
+                          "example": require.resolve('./src/css/custom.css')
+                        }
+                      }
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "plugins": {
+            "type": "array",
+            "description": "Additional Docusaurus plugins",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "example": "@docusaurus/plugin-content-docs"
+                },
+                {
+                  "type": "array",
+                  "items": [
+                    {
+                      "type": "string",
+                      "example": "@docusaurus/plugin-content-docs"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "default"
+                        },
+                        "path": {
+                          "type": "string",
+                          "example": "docs"
+                        },
+                        "routeBasePath": {
+                          "type": "string",
+                          "example": "/"
+                        },
+                        "sidebarPath": {
+                          "type": "string",
+                          "example": require.resolve('./sidebars.js')
+                        },
+                        "editCurrentVersion": {
+                          "type": "boolean",
+                          "example": false
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "themes": {
+            "type": "array",
+            "description": "Docusaurus themes",
+            "items": {
+              "type": "string",
+              "example": "@docusaurus/theme-search-algolia"
+            }
+          },
+          "themeConfig": {
+            "type": "object",
+            "required": ["navbar", "footer", "prism"],
+            "properties": {
+              "navbar": {
+                "type": "object",
+                "required": ["title", "logo", "items"],
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "example": "Physical AI and Humanoid Robotics"
+                  },
+                  "logo": {
+                    "type": "object",
+                    "properties": {
+                      "alt": {
+                        "type": "string",
+                        "example": "Physical AI and Humanoid Robotics Logo"
+                      },
+                      "src": {
+                        "type": "string",
+                        "example": "img/logo.svg"
+                      }
+                    }
+                  },
+                  "items": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "enum": ["doc", "docsVersionDropdown", "localeDropdown", "search", "custom"],
+                          "example": "doc"
+                        },
+                        "docId": {
+                          "type": "string",
+                          "example": "module-1/intro"
+                        },
+                        "position": {
+                          "type": "string",
+                          "enum": ["left", "right"],
+                          "example": "left"
+                        },
+                        "label": {
+                          "type": "string",
+                          "example": "Tutorial"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "footer": {
+                "type": "object",
+                "properties": {
+                  "style": {
+                    "type": "string",
+                    "enum": ["dark", "light"],
+                    "example": "dark"
+                  },
+                  "links": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "title": {
+                          "type": "string",
+                          "example": "Docs"
+                        },
+                        "items": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "label": {
+                                "type": "string",
+                                "example": "Tutorial"
+                              },
+                              "to": {
+                                "type": "string",
+                                "example": "docs/module-1/intro"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "copyright": {
+                    "type": "string",
+                    "example": "Copyright © 2025 Your Organization. Built with Docusaurus."
+                  }
+                }
+              },
+              "prism": {
+                "type": "object",
+                "properties": {
+                  "theme": {
+                    "type": "object",
+                    "example": "require('prism-react-renderer/themes/github')"
+                  },
+                  "darkTheme": {
+                    "type": "object",
+                    "example": "require('prism-react-renderer/themes/dracula')"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+## Additional Configuration Schemas
+
+### Schema: sidebars.js
+```json
+{
+  "type": "object",
+  "properties": {
+    "module-1-ros2": {
+      "type": "object",
+      "properties": {
+        "type": "string",
+        "enum": ["category"],
+        "label": "string",
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": "string",
+              "enum": ["doc"],
+              "id": "string",
+              "label": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Schema: Frontmatter Metadata for Documentation Files
+```json
+{
+  "type": "object",
+  "required": ["title", "description", "sidebar_position"],
+  "properties": {
+    "title": {
+      "type": "string",
+      "description": "Page title displayed in browser tab and site navigation"
+    },
+    "description": {
+      "type": "string",
+      "description": "Meta description for SEO"
+    },
+    "keywords": {
+      "type": "array",
+      "description": "Keywords for search optimization",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sidebar_position": {
+      "type": "number",
+      "description": "Position in sidebar navigation"
+    }
+  }
+}
+```
